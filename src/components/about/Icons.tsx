@@ -1,14 +1,11 @@
+import React from 'react';
 
 function Canada() {
-  return (
-    <h1 className="text-xl font-bold">Canadian</h1>
-  )
+  return <h1 className="text-xl font-bold">Canadian</h1>;
 }
 
 function Camping() {
-  return (
-    <h1 className="text-xl font-bold">Camping</h1>
-  )
+  return <h1 className="text-xl font-bold">Camping</h1>;
 }
 
 function HoverableEmoji({
@@ -22,15 +19,27 @@ function HoverableEmoji({
   delay: string;
   setInfo: (info: React.ReactNode) => void;
 }) {
+  const [isHovered, setIsHovered] = React.useState(false);
+
   return (
     <span
       className="relative group cursor-pointer"
-      onMouseEnter={() => setInfo(children)}
-      onMouseLeave={() => setInfo(null)}
+      onMouseEnter={() => {
+        setIsHovered(true);
+        setInfo(children);
+      }}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        setInfo(null);
+      }}
     >
       <span
-        className={`text-5xl transition duration-100 ease-in-out filter group-hover:grayscale-0 animate-beckon`}
-        style={{ animationDelay: delay }}
+        className={`text-5xl transition duration-100 ease-in-out filter ${isHovered ? 'grayscale-0' : 'grayscale-[60%]'
+          }`}
+        style={{
+          animation: isHovered ? 'none' : `beckon 2s ease-in-out infinite`,
+          animationDelay: delay,
+        }}
         role="img"
         aria-label="emoji"
       >
@@ -43,7 +52,7 @@ function HoverableEmoji({
 export default function Icons(props: { setInfo: (info: React.ReactNode) => void }) {
   let delay = 0;
 
-  const icons = ([
+  const icons = [
     { emoji: "🇨🇦", info: <Canada /> },
     { emoji: "🏕️", info: <Camping /> },
     { emoji: "☕️", info: <Camping /> },
@@ -58,14 +67,13 @@ export default function Icons(props: { setInfo: (info: React.ReactNode) => void 
     { emoji: "🎸", info: <Canada /> },
   ].map(({ emoji, info }) => {
     const delayValue = `${delay}s`;
-    delay += 0.25;
+    delay += 0.2;
     return (
       <HoverableEmoji setInfo={props.setInfo} key={emoji} emoji={emoji} delay={delayValue}>
         {info}
       </HoverableEmoji>
-    )
-  }
-  ))
+    );
+  });
 
-  return icons
+  return <div className="flex flex-wrap gap-2">{icons}</div>;
 }
