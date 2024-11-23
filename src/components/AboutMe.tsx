@@ -1,5 +1,4 @@
 "use client"
-import { type Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
@@ -8,11 +7,10 @@ import React from 'react'
 import { Container } from '@/components/Container'
 import {
   GitHubIcon,
-  InstagramIcon,
   LinkedInIcon,
-  XIcon,
 } from '@/components/SocialIcons'
 import portraitImage from '@/images/portrait.jpg'
+import Icons from './about/Icons'
 
 function SocialLink({
   className,
@@ -49,42 +47,8 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
-function Canada() {
-  return (
-    <h1 className="text-xl font-bold">Canadian</h1>
-  )
-}
-
-function Camping() {
-  return (
-    <h1 className="text-xl font-bold">Camping</h1>
-  )
-}
-
-
 export function AboutMe() {
   const [info, setInfo] = React.useState<React.ReactNode>(null)
-
-  function HoverableEmoji({ emoji, children }: {
-    emoji: string;
-    children: React.ReactNode;
-  }) {
-    return (
-      <span
-        className="relative group cursor-pointer"
-        onMouseEnter={() => setInfo(children)}
-        onMouseLeave={() => setInfo(null)}
-      >
-        <span
-          className="text-5xl transition duration-100 ease-in-out filter grayscale-[60%] group-hover:grayscale-0"
-          role="img"
-          aria-label="emoji"
-        >
-          {emoji}
-        </span>
-      </span>
-    );
-  }
 
   return (
     <Container className="mt-16 sm:mt-32">
@@ -101,43 +65,11 @@ export function AboutMe() {
         </div>
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            About me
+            Show Don&apos;t Tell
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
-            <p>The key to storytelling is show don&apos;t tell.</p>
-
-
             <div className="flex flex-wrap gap-2">
-              <HoverableEmoji emoji="🇨🇦">
-                <Canada />
-              </HoverableEmoji>
-              <HoverableEmoji emoji="🏕️">
-                <Camping />
-              </HoverableEmoji>
-              <HoverableEmoji emoji="☕️">
-                Coffee
-              </HoverableEmoji>
-              <HoverableEmoji emoji="💻">
-                Coding
-              </HoverableEmoji>
-              <HoverableEmoji emoji="🤿">
-                Diving
-              </HoverableEmoji>
-              <HoverableEmoji emoji="🍻">
-                Beer
-              </HoverableEmoji>
-              <HoverableEmoji emoji="🛶">
-                Canoeing
-              </HoverableEmoji>
-              <HoverableEmoji emoji="🚴">
-                Cycling
-              </HoverableEmoji>
-              <HoverableEmoji emoji="🔭">
-                Stargazing
-              </HoverableEmoji>
-              <HoverableEmoji emoji="🎬">
-                Movies
-              </HoverableEmoji>
+              <Icons setInfo={setInfo} />
             </div>
             <div>
               {info}

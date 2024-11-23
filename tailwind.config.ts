@@ -23,6 +23,17 @@ export default {
       '8xl': ['6rem', { lineHeight: '1' }],
       '9xl': ['8rem', { lineHeight: '1' }],
     },
+    extend: {
+      keyframes: {
+        beckon: {
+          '0%, 100%': { filter: 'grayscale(100%)' },
+          '50%': { filter: 'grayscale(0%)' },
+        },
+      },
+      animation: {
+        beckon: 'beckon 2s ease-in-out infinite',
+      },
+    },
     typography: typographyStyles,
   },
 } satisfies Config

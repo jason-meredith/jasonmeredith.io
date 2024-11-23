@@ -7,7 +7,6 @@ export const metadata: Metadata = {
     'I’m Spencer Sharp. I live in New York City, where I design the future.',
 }
 
-
 export default function About() {
   return(<AboutMe />)
 }
