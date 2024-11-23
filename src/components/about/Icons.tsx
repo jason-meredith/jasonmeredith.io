@@ -1,3 +1,4 @@
+import React from 'react';
 
 function Canada() {
   return (
@@ -22,15 +23,26 @@ function HoverableEmoji({
   delay: string;
   setInfo: (info: React.ReactNode) => void;
 }) {
+  const [isHovered, setIsHovered] = React.useState(false);
+
+  const hoverClass = isHovered ? `text-6xl transition duration-100 ease-in-out filter group-hover:grayscale-0` : `text-5xl transition duration-100 ease-in-out filter group-hover:grayscale-0 animate-beckon`;
+  const hoverStyle = isHovered ? {} : { animationDelay: delay };
+
   return (
     <span
       className="relative group cursor-pointer"
-      onMouseEnter={() => setInfo(children)}
-      onMouseLeave={() => setInfo(null)}
+      onMouseEnter={() => {
+        setIsHovered(true);
+        setInfo(children);
+      }}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        setInfo(null);
+      }}
     >
       <span
-        className={`text-5xl transition duration-100 ease-in-out filter group-hover:grayscale-0 animate-beckon`}
-        style={{ animationDelay: delay }}
+        className={hoverClass}
+        style={hoverStyle}
         role="img"
         aria-label="emoji"
       >
