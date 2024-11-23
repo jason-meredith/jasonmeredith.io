@@ -25,7 +25,7 @@ function HoverableEmoji({
 }) {
   const [isHovered, setIsHovered] = React.useState(false);
 
-  const hoverClass = isHovered ? `text-6xl transition duration-100 ease-in-out filter group-hover:grayscale-0` : `text-5xl transition duration-100 ease-in-out filter group-hover:grayscale-0 animate-beckon`;
+  const hoverClass = isHovered ? `text-5xl transition duration-100 ease-in-out filter group-hover:grayscale-0` : `text-5xl transition duration-100 ease-in-out filter group-hover:grayscale-0 animate-beckon`;
   const hoverStyle = isHovered ? {} : { animationDelay: delay };
 
   return (
