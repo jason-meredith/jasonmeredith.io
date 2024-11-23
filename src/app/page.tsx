@@ -11,10 +11,7 @@ import {
   LinkedInIcon,
   XIcon,
 } from '@/components/SocialIcons'
-import logoAirbnb from '@/images/logos/airbnb.svg'
-import logoFacebook from '@/images/logos/facebook.svg'
 import logoRewind from '@/images/logos/rewind.svg'
-import logoStarbucks from '@/images/logos/starbucks.svg'
 import image1 from '@/images/photos/image-1.jpg'
 import image2 from '@/images/photos/image-2.jpg'
 import image3 from '@/images/photos/image-3.jpg'
@@ -85,14 +82,14 @@ function ArrowDownIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 function Article({ article }: { article: ArticleWithSlug }) {
   return (
     <Card as="article">
-      <Card.Title href={`/articles/${article.slug}`}>
+      <Card.Title href={`/blog/${article.slug}`}>
         {article.title}
       </Card.Title>
       <Card.Eyebrow as="time" dateTime={article.date} decorate>
         {formatDate(article.date)}
       </Card.Eyebrow>
       <Card.Description>{article.description}</Card.Description>
-      <Card.Cta>Read article</Card.Cta>
+      <Card.Cta>Read</Card.Cta>
     </Card>
   )
 }
@@ -188,20 +185,13 @@ function Resume() {
   let resume: Array<Role> = [
     {
       company: 'Rewind',
-      title: 'Application Security Developer',
+      title: 'Application Security Engineer',
       logo: logoRewind,
-      start: '2021',
+      start: '2019',
       end: {
         label: 'Present',
         dateTime: new Date().getFullYear().toString(),
       },
-    },
-    {
-      company: 'Rewind',
-      title: 'Software Developer',
-      logo: logoRewind,
-      start: '2019',
-      end: '2021',
     }
   ]
 
@@ -262,7 +252,7 @@ export default async function Home() {
             Hello! 👋
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Jason, an Application Security enthusiast and Software Developer based in Canada 🇨🇦.
+            I’m Jason, a software developer and cybersecurity enthusiast based in Canada 🇨🇦.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink href="#" aria-label="Follow on X" icon={XIcon} />
