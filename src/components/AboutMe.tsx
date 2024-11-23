@@ -51,7 +51,7 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 function Canada() {
   return (
-    <h1 className="text-xl font-bold">What does being Canadian mean to me?</h1>
+    <h1 className="text-xl font-bold">Canadian</h1>
   )
 }
 
@@ -63,9 +63,12 @@ function Camping() {
 
 
 export function AboutMe() {
-  const [info, setInfo] = React.useState(false)
+  const [info, setInfo] = React.useState<React.ReactNode>(null)
 
-  function HoverableEmoji({ emoji, children, setInfo }) {
+  function HoverableEmoji({ emoji, children }: {
+    emoji: string;
+    children: React.ReactNode;
+  }) {
     return (
       <span
         className="relative group cursor-pointer"
@@ -104,40 +107,38 @@ export function AboutMe() {
             <p>The key to storytelling is show don&apos;t tell.</p>
 
 
-            <div className="flex space-x-2">
-              <HoverableEmoji setInfo={setInfo} emoji="🇨🇦">
+            <div className="flex flex-wrap gap-2">
+              <HoverableEmoji emoji="🇨🇦">
                 <Canada />
               </HoverableEmoji>
-              <HoverableEmoji setInfo={setInfo} emoji="🏕️">
+              <HoverableEmoji emoji="🏕️">
                 <Camping />
               </HoverableEmoji>
-              <HoverableEmoji setInfo={setInfo} emoji="☕️">
+              <HoverableEmoji emoji="☕️">
                 Coffee
               </HoverableEmoji>
-              <HoverableEmoji setInfo={setInfo} emoji="💻">
+              <HoverableEmoji emoji="💻">
                 Coding
               </HoverableEmoji>
-              <HoverableEmoji setInfo={setInfo} emoji="🤿">
+              <HoverableEmoji emoji="🤿">
                 Diving
               </HoverableEmoji>
-              <HoverableEmoji setInfo={setInfo} emoji="🍻">
+              <HoverableEmoji emoji="🍻">
                 Beer
               </HoverableEmoji>
-              <HoverableEmoji setInfo={setInfo} emoji="🛶">
+              <HoverableEmoji emoji="🛶">
                 Canoeing
               </HoverableEmoji>
-              <HoverableEmoji setInfo={setInfo} emoji="🚴">
+              <HoverableEmoji emoji="🚴">
                 Cycling
               </HoverableEmoji>
-              <HoverableEmoji setInfo={setInfo} emoji="🔭">
+              <HoverableEmoji emoji="🔭">
                 Stargazing
               </HoverableEmoji>
-              <HoverableEmoji setInfo={setInfo} emoji="🎬">
+              <HoverableEmoji emoji="🎬">
                 Movies
               </HoverableEmoji>
             </div>
-
-            <p className="text-sm"><em>(Mouseover ☝️)</em></p>
             <div>
               {info}
             </div>
