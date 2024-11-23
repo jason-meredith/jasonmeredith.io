@@ -101,7 +101,7 @@ export function AboutMe() {
             About me
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
-            <p>The key to storytelling is show don`&apos;t tell.</p>
+            <p>The key to storytelling is show don&apos;t tell.</p>
 
 
             <div className="flex space-x-2">
